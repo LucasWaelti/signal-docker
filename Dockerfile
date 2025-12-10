@@ -39,4 +39,9 @@ ENV UBUNTU_CODENAME=noble \
     VERSION_CODENAME=noble
 
 # Default command launches Signal (disable GPU for container compatibility)
-CMD ["signal-desktop", "--no-sandbox", "--disable-gpu"]
+CMD ["signal-desktop", "--no-sandbox", \
+    "--disable-gpu", "--disable-gpu-sandbox", \
+    "--disable-software-rasterizer", "--disable-dev-shm-usage", \
+    "--disable-extensions", "--disable-background-timer-throttling", \
+    "--disable-backgrounding-occluded-windows", "--disable-renderer-backgrounding", \
+    "--disable-features=TranslateUI", "--disable-ipc-flooding-protection"]
