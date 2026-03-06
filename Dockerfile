@@ -27,9 +27,6 @@ RUN wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > s
 # Create config directory structure with correct ownership
 RUN mkdir -p /home/app/.config/Signal /home/app/.cache /home/app/.local/share
 
-# Create a consistent /etc/os-release in the image so Signal/Electron sees the container distro
-RUN printf 'NAME="Ubuntu"\nVERSION="24.04 (noble)"\nID=ubuntu\nID_LIKE=debian\nPRETTY_NAME="Ubuntu 24.04 (noble)"\nVERSION_CODENAME=noble\nUBUNTU_CODENAME=noble\n' > /etc/os-release
-
 # Add launcher wrapper and make it executable
 COPY usr-local-bin-run-signal.sh /usr/local/bin/run-signal
 RUN chmod +x /usr/local/bin/run-signal && chown app:app /usr/local/bin/run-signal
